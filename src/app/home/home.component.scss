@@ -1,0 +1,19 @@
+body {
+  padding: 5% 5%;
+  font-size: 100%;
+  font-family: "Noto Sans", sans-serif;
+  color: #eee9dc;
+  background: #48b379;
+}
+
+h2 {
+  margin: 3em 0 0 0;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}

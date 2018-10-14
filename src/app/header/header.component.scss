@@ -1,0 +1,18 @@
+$lt-gray: #ddd;
+$background-dark: #512da8;
+$background-moredark: #7154c9;
+$background-light: #9575cd;
+$background-pale: #d1c4e9;
+
+.active {
+  background: $background-moredark;
+}
+
+.toolbar {
+  position: fixed;
+  z-index: 999;
+}
+
+.example-spacer {
+  width: 25px;
+}

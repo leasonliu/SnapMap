@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+$lt-gray: #ddd;
+$background-dark: #369361;
+$background-light: #48b379;
+$background-pale: #51b17c;
+$primary-color-dark: #369361;
+$primary-color: #48b379;
+$primary-color-light: #d1c4e9;
+$primary-color-text: #ffffff;
+$accent-color: #ffc107;
+$primary-text-color: #212121;
+$secondary-text-color: #757575;
+$divider-color: #bdbdbd;
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}

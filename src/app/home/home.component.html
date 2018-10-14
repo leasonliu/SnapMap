@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<body>
+  <h2>Write Note</h2>
+  <p>Please write your note for the patient.</p>
+  <form nonvalidate [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <div class="example-container">
+      <mat-form-field class="full-width">
+        <textarea matInput formControlName="note" placeholder="Write note" rows="12" style="font-size: 25px;"></textarea>
+      </mat-form-field>
+      <button mat-stroked-button [disabled]="noteForm.invalid">Submit</button>
+    </div>
+  </form>
+</body>
