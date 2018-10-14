@@ -2,39 +2,37 @@
 
 <body>
   <h2>Timeline</h2>
-  <p><a href="#worker6">Please set the $vertical variable to false to see the horizontal version.</a></p>
+  <p>Please scroll down to view more information and click to see details.</p>
   <form nonvalidate [formGroup]="searchForm">
     <mat-form-field class="full-width">
       <input matInput type="text" placeholder="Search keyword" formControlName="search">
     </mat-form-field>
   </form>
+  <span *ngIf="tempNotes.length == 0">No notes found.</span>
   <ul id='timeline'>
-    <li class='work' *ngFor="let note of notes; index as i">
+    <li class='work' *ngFor="let note of tempNotes; index as i">
       <input class='radio' id="{{getCatedID(i)}}" name='works' type='radio'>
       <button mat-stroked-button class="original" (click)="openOriginal(i)">Original</button>
       <div class="relative">
         <label for="{{getCatedID(i)}}">{{note.title}}</label>
         <span class='date'>{{note.time}}</span>
-        <span class='circle'></span>
+        <span class='circle' [ngClass]="getFreqColor(i)"></span>
       </div>
       <div class='content'>
         <mat-tab-group class="button-row">
           <mat-tab label="Treatment">
-            <p>{{note.treatment}}</p>
+            <div [innerHTML]="getTreat(i)" style="margin-top: 20px; padding-right: 20px;"></div>
           </mat-tab>
           <mat-tab label="Problem">
-            <p>{{note.problem}}</p>
+            <div [innerHTML]="getProb(i)" style="margin-top: 20px;padding-right: 20px;"></div>
           </mat-tab>
           <mat-tab label="Test">
-            <p>{{note.test}}</p>
+            <div [innerHTML]="getTest(i)" style="margin-top: 20px;padding-right: 20px;"></div>
           </mat-tab>
         </mat-tab-group>
       </div>
     </li>
   </ul>
-
-
-
 
   <style>
     /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
@@ -91,7 +89,7 @@
       position: absolute;
     }
 
-    .tag {
+    /* .tag {
       margin-top: 7px;
       top: 55%;
       left: -140px;
@@ -101,7 +99,7 @@
       max-width: 88.2px;
       max-height: 80px;
       overflow-y: scroll;
-    }
+    } */
 
     .circle {
       margin-top: -10px;
@@ -114,6 +112,18 @@
       border-radius: 50%;
       display: block;
       position: absolute;
+    }
+
+    .circle.light {
+      background: #48b379;
+    }
+
+    .circle.normal {
+      background: yellow;
+    }
+
+    .circle.dark {
+      background: #ff0000c0;
     }
 
     .content {
@@ -212,11 +222,13 @@
     }
 
     .radio:checked~.relative .circle {
-      background: #f98262;
+      /* background: #f98262; */
+      background: black;
     }
 
     .radio:checked~.content {
-      max-height: 250px;
+      max-height: 400px;
+      min-height: 250px;
       border-color: #eee9dc;
       margin-right: 20px;
       transform: translateX(20px);
@@ -224,17 +236,31 @@
     }
 
     .radio:checked~.content p {
-      max-height: 200px;
+      max-height: 350px;
+      min-height: 200px;
       color: #eee9dc;
       transition: color 0.3s linear 0.3s;
     }
 
     .radio:checked~.content .button-row {
-      max-height: 200px;
+      max-height: 350px;
       transition: color 0.3s linear 0.3s;
     }
 
-    .treatment {}
+    ::ng-deep .treatment {
+      color: #2669fcef;
+      text-decoration: underline;
+    }
+
+    ::ng-deep .problem {
+      color: #da4e4e;
+      text-decoration: underline;
+    }
+
+    ::ng-deep .test {
+      color: darkslategray;
+      text-decoration: underline;
+    }
 
     /* -------------------------------------
    * mobile phones (vertical version only)
